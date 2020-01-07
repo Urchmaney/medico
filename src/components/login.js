@@ -5,10 +5,10 @@ import '../styles/style.scss';
 
 const Login = () => (
   <main>
-    <form className="login">
+    <form className="home container">
       <Image />
-      <h3 className="login-header">Login</h3>
-      <p>Login with your username. </p>
+      <h3 className="home-header">Login</h3>
+      <p className="home-text">Login with your username. </p>
       <input id="login" type="text" placeholder="login" />
       <input type="submit" value="Login" />
     </form>
