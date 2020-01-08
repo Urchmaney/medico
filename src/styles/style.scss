@@ -18,6 +18,10 @@ main{
   height: 750px;
 }
 
+.error{
+  color: red;
+}
+
 .space{
   margin-bottom: 20px;
 }
@@ -75,7 +79,7 @@ footer{
     border: none;
     padding-left: 15px;
     margin-top: 10px;
-    &[type="submit"]{
+    &[type="button"]{
       background-color: $btn-color;
       color: white;
       font-weight: bold;
