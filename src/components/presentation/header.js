@@ -4,9 +4,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import '../../styles/style.scss';
 
 const Header = (props) => {
-  const { color, name, search, filter, filterOnClick } = props;
+  const {
+    color,
+    name,
+    search,
+    filter,
+    filterOnClick,
+    searchOnChange,
+  } = props;
   const style = {
-    height: search || filter ? 100 : 70,
+    height: search ? 100 : 70,
     backgroundColor: color,
   };
   return (
@@ -23,7 +30,7 @@ const Header = (props) => {
       search && (
       <div className="search-container">
         <span><FontAwesomeIcon icon="search" /></span>
-        <input type="text" />
+        <input type="text" onChange={searchOnChange} />
       </div>
       )
       }
@@ -42,12 +49,14 @@ Header.propTypes = {
   name: PropTypes.string.isRequired,
   color: PropTypes.string,
   filterOnClick: PropTypes.func,
+  searchOnChange: PropTypes.func,
   filter: PropTypes.bool,
   search: PropTypes.bool,
 };
 
 Header.defaultProps = {
   filterOnClick: () => {},
+  searchOnChange: () => {},
   search: false,
   filter: false,
   color: '#e1fff7',

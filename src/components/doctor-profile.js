@@ -1,10 +1,14 @@
+/* eslint-disable react/forbid-prop-types */
 import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Header from './presentation/header';
 import Button from './presentation/button';
 import Footer from './presentation/footer';
 
 const DoctorProfile = (props) => {
+  const { doctor, role, history } = props;
   return (
     <main>
       <div className="profile-con">
@@ -12,28 +16,28 @@ const DoctorProfile = (props) => {
         <div className="doc-profile-con">
           <div className="doc-profile">
             <p>
-              Dr Name Whi
+              {`${doctor.first_name} ${doctor.last_name}`}
             </p>
             <div>
               <span className="profile">
                 <FontAwesomeIcon icon="user" />
               </span>
               <p>
-                General Manager
+                {role.name}
               </p>
               <p className="feature">
                 <span>
                   &#8358;
-                  200
+                  {doctor.price}
                 </span>
                 <span>
-                  44
+                  {doctor.years_experience}
                   &nbsp;yrs&nbsp; of&nbsp; exp
                 </span>
                 <span>
                   <span className="heart"><FontAwesomeIcon icon="heart" /></span>
                   &nbsp;
-                  100
+                  {doctor.likes_count}
                 </span>
               </p>
             </div>
@@ -70,7 +74,7 @@ const DoctorProfile = (props) => {
           </div>
         </div>
         <div className="appoint-btn-con">
-          <Button name="Book Appointment" />
+          <Button name="Book Appointment" onClick={() => history.push('/date') } />
         </div>
       </div>
       <Footer />
@@ -78,4 +82,14 @@ const DoctorProfile = (props) => {
   );
 };
 
-export default DoctorProfile;
+const mapStateToProps = state => ({
+  doctor: state.doctor,
+  role: state.role,
+});
+
+DoctorProfile.propTypes = {
+  doctor: PropTypes.object.isRequired,
+  role: PropTypes.object.isRequired,
+};
+
+export default connect(mapStateToProps)(DoctorProfile);

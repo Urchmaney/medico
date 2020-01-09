@@ -1,4 +1,10 @@
-import { LOGIN, LOGOUT, ADD_TOKEN } from '../helpers/constants';
+import {
+  LOGIN,
+  LOGOUT,
+  ADD_TOKEN,
+  ROLE,
+  DOCTOR,
+} from '../helpers/constants';
 
 const login = () => ({
   type: LOGIN,
@@ -13,8 +19,20 @@ const addToken = (token) => ({
   token,
 });
 
+const changeRole = (role) => ({
+  type: ROLE,
+  role,
+});
+
+const changeDoctor = (doctor) => ({
+  type: DOCTOR,
+  doctor,
+});
+
 export {
   login,
   logout,
   addToken,
+  changeRole,
+  changeDoctor,
 };

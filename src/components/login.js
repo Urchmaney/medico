@@ -29,7 +29,7 @@ class Login extends React.Component {
     } = this.props;
     login();
     addToken(result.token);
-    history.push('/');
+    history.push('/dashboard');
   }
 
   onErrorLogin(errors) {

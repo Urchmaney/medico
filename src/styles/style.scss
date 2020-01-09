@@ -39,6 +39,7 @@ main{
   background-color: $btn-color;
   color: white;
   font-weight: bold;
+  cursor: pointer;
 }
 
 footer{
@@ -166,6 +167,7 @@ footer{
     color: $dark-color;
     margin-bottom: 10px;
     padding-top: 10px;
+    cursor: pointer;
   }
 }
 
@@ -173,12 +175,23 @@ footer{
   background-color: $bg-color;
   display: flex;
   padding: 10px;
+  flex-wrap: wrap;
   justify-content: space-around;
   position: relative;
+  .filter-text{
+    padding-top:5px;
+  }
+  select{
+    color: white;
+    background-color: $dark-color;
+    
+  }
   input, select {
     border-radius: 10px;
     border: none;
+    margin-top: 5px;
     padding-left : 10px;
+    outline: none;
     height: 25px;
   }
   .close{
@@ -187,13 +200,15 @@ footer{
     border: none;
     right: 14px;
     top: -12px;
+    color: red;
+    font-weight: bold;
   }
 }
 
 .doctor{
   width: 80%;
   margin: auto;
-  box-shadow: 1px 1px 1px 1px #eaeaea;
+  box-shadow: 2px 2px 2px 2px #eaeaea;
   padding: 10px;
   margin-top: 15px;
   .doctor-container{
@@ -201,11 +216,14 @@ footer{
     justify-content: space-around;
     .profile{
       display: block;
-      width: 61px;
+      padding: 20px;
+      width: 13vh;
+      height: 13vh;
+      margin-right: 5px;
       text-align: center;
-      font-size: 50px;
+      font-size: 15vw;
       border:1px solid gray;
-      border-radius: 30px;
+      border-radius: 30vh;
       color : #555555;
     }
     .info{
@@ -222,7 +240,10 @@ footer{
       .feature{
         margin-top: 10px;
         display: flex;
-        width: 250px;
+        width: 100%;
+        font-weight: bold;
+        color: darkgray;
+        font-size: 0.9rem;
         justify-content: space-between;
       }
     }

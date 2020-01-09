@@ -1,30 +1,45 @@
+/* eslint-disable react/forbid-prop-types */
 import React from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import Header from './presentation/header';
 import Doctor from './presentation/doctor';
+import { get } from '../helpers/api';
+import { roleUrl } from '../helpers/constants';
 import '../styles/style.scss';
 
-const doctors = [{
-  name: 'Frnk hugo',
-  role: 'general physician',
-  price: 200,
-  years: 4,
-  likes: 200,
-}, {
-  name: 'Gerrad hugo',
-  role: 'General physician',
-  price: 300,
-  years: 33,
-  likes: 1200,
-}];
+const likesCategory = ['0-50', '50-100', '100-200', '200-400', '400 - above'];
+const yrCategory = ['0-3', '4-7', '7-10', '10-13', '14-above'];
+const getCategory = (category) => {
+  const values = category.split('-');
+  return values.map(element => (
+    Number.isNaN(element) ? Infinity : Number(element)
+  ));
+};
 
 class DoctorsList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       filterShow: false,
+      doctors: [],
+      like: '',
+      search: '',
+      yr: '',
     };
     this.showFilter = this.showFilter.bind(this);
     this.closeFilter = this.closeFilter.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  componentDidMount() {
+    const { role, token } = this.props;
+    const getResult = get(roleUrl(role.id), token);
+    getResult.then(result => {
+      this.setState(state => ({
+        ...state, doctors: [...result],
+      }));
+    });
   }
 
   showFilter() {
@@ -39,23 +54,59 @@ class DoctorsList extends React.Component {
     });
   }
 
+  handleChange(event) {
+    const { value, name } = event.target;
+    this.setState(state => ({
+      ...state, [name]: value,
+    }));
+  }
+
   render() {
-    const { filterShow } = this.state;
-    const { showFilter, closeFilter } = this;
+    const {
+      filterShow, doctors, search, like, yr,
+    } = this.state;
+    const { showFilter, closeFilter, handleChange } = this;
+    const { role, history } = this.props;
+    let filterDoctors = doctors;
+    if (like) {
+      const category = getCategory(like);
+      filterDoctors = doctors.filter(doctor => doctor.likes_count >= category[0]
+      && doctor.likes_count <= category[1]);
+    }
+    if (yr) {
+      const category = getCategory(yr);
+      filterDoctors = filterDoctors.filter(doctor => doctor.years_experience >= category[0]
+      && doctor.years_experience <= category[1]);
+    }
+    if (search) {
+      filterDoctors = filterDoctors.filter(doctor => doctor.first_name.toLowerCase().includes(search.toLowerCase())
+      || doctor.last_name.toLowerCase().includes(search.toLowerCase()));
+    }
+
     return (
       <main>
-        <Header name="Role" filter={!filterShow} filterOnClick={showFilter} />
+        <Header name="Doctors" filter={!filterShow} filterOnClick={showFilter} />
         {
           filterShow
           && (
           <div className="filter">
-            <span>Filter :</span>
-            <input type="text" />
-            <select>
-              <option>yr Experience</option>
+            <span className="filter-text">Filter :</span>
+            <input type="text" name="search" value={search} onChange={handleChange} placeholder="search name" />
+            <select name="yr" onChange={handleChange}>
+              <option value="">yr Experience</option>
+              {yrCategory.map(category => (
+                <option value={category} key={category}>
+                  {category}
+                </option>
+              ))}
             </select>
-            <select>
-              <option>Likes</option>
+            <select name="like" onChange={handleChange}>
+              <option value="">Likes</option>
+              {likesCategory.map(category => (
+                <option value={category} key={category}>
+                  {category}
+                </option>
+              ))}
             </select>
             <button className="close" onClick={closeFilter} type="button">
               X
@@ -65,8 +116,8 @@ class DoctorsList extends React.Component {
         }
 
         <div className="doctors-container">
-          {doctors.map((doctor) => (
-            <Doctor key={doctor} doc={doctor} />
+          {filterDoctors.map((doctor) => (
+            <Doctor key={doctor.id} doc={doctor} role={role.name} history={history} />
           ))}
         </div>
       </main>
@@ -74,4 +125,15 @@ class DoctorsList extends React.Component {
   }
 }
 
-export default DoctorsList;
+const mapStateToProps = state => ({
+  role: state.role,
+  token: state.token,
+});
+
+DoctorsList.propTypes = {
+  role: PropTypes.object.isRequired,
+  token: PropTypes.string.isRequired,
+  history: PropTypes.object.isRequired,
+};
+
+export default connect(mapStateToProps)(DoctorsList);
