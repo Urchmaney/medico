@@ -62,7 +62,7 @@ class Register extends React.Component {
 
   render() {
     const {
-      errors, familyName, firstName, username
+      errors, familyName, firstName, username,
     } = this.state;
     const { handleChange, handleSubmit } = this;
     return (
@@ -87,7 +87,7 @@ class Register extends React.Component {
 
 const mapDispatchToProps = dispatch => ({
   login: () => dispatch(login()),
-  addToken: (token) => dispatch(addToken(token)),
+  addToken: token => dispatch(addToken(token)),
 });
 
 Register.propTypes = {

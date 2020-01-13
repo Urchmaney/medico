@@ -20,7 +20,7 @@ class Appointments extends React.Component {
   componentDidMount() {
     const { token } = this.props;
     const getResult = get(appointmentsUrl, token);
-    getResult.then(result => {
+    getResult.then((result) => {
       if (!result.error) {
         this.setState(state => ({
           ...state, appointments: result,
