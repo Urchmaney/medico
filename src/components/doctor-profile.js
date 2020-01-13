@@ -9,7 +9,9 @@ import Button from './presentation/button';
 import Footer from './presentation/footer';
 
 const DoctorProfile = (props) => {
-  const { doctor, role, history, loggedIn } = props;
+  const {
+    doctor, role, history, loggedIn,
+  } = props;
   if (!loggedIn) {
     return (<Redirect to="/login" />);
   }

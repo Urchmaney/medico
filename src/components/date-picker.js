@@ -43,7 +43,9 @@ class DatePicker extends React.Component {
   }
 
   render() {
-    const { doctor, role, history, loggedIn } = this.props;
+    const {
+      doctor, role, history, loggedIn,
+    } = this.props;
     const { handleChange, handleSubmit } = this;
     if (!loggedIn) {
       return (<Redirect to="/login" />);
@@ -98,8 +100,8 @@ class DatePicker extends React.Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  changeAppointmentDate: (date) => dispatch(changeAppointmentDate(date)),
-  changeAppointmentTime: (time) => dispatch(changeAppointmentTime(time)),
+  changeAppointmentDate: date => dispatch(changeAppointmentDate(date)),
+  changeAppointmentTime: time => dispatch(changeAppointmentTime(time)),
 });
 
 const mapStateToProps = state => ({

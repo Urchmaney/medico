@@ -28,7 +28,7 @@ class Dashboard extends React.Component {
   componentDidMount() {
     const { token } = this.props;
     const getResult = get(rolesUrl, token);
-    getResult.then(result => {
+    getResult.then((result) => {
       if (!result.error) {
         this.setState(state => ({
           ...state, roles: result,
@@ -60,14 +60,16 @@ class Dashboard extends React.Component {
 
   render() {
     const { roles, search, showMenu } = this.state;
-    const { changeRole, history, name, loggedIn } = this.props;
+    const {
+      changeRole, history, name, loggedIn,
+    } = this.props;
     const { showMenuBar, hideMenu } = this;
     let searchRoles = roles;
     if (!loggedIn) {
       return (<Redirect to="/login" />);
     }
     if (search) {
-      searchRoles = roles.filter((role) => role.name.toLowerCase().includes(search.toLowerCase()));
+      searchRoles = roles.filter(role => role.name.toLowerCase().includes(search.toLowerCase()));
     }
     return (
       <main>
@@ -86,8 +88,8 @@ class Dashboard extends React.Component {
             </p>
             <div className="category">
               {
-                searchRoles.map((category) => (
-                  <div role="presentation" className="category-unit" key={category.id} onClick={() => { changeRole(category); history.push('/doctors'); } }>
+                searchRoles.map(category => (
+                  <div role="presentation" className="category-unit" key={category.id} onClick={() => { changeRole(category); history.push('/doctors'); }}>
                     {category.name}
                   </div>
                 ))
@@ -110,7 +112,7 @@ Dashboard.propTypes = {
 };
 
 const mapDispatchToProps = dispatch => ({
-  changeRole: (role) => dispatch(changeRole(role)),
+  changeRole: role => dispatch(changeRole(role)),
 });
 
 const mapStateToProps = state => ({

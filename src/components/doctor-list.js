@@ -36,7 +36,7 @@ class DoctorsList extends React.Component {
   componentDidMount() {
     const { role, token } = this.props;
     const getResult = get(roleUrl(role.id), token);
-    getResult.then(result => {
+    getResult.then((result) => {
       this.setState(state => ({
         ...state, doctors: [...result],
       }));
@@ -83,7 +83,8 @@ class DoctorsList extends React.Component {
       && doctor.years_experience <= category[1]);
     }
     if (search) {
-      filterDoctors = filterDoctors.filter(doctor => doctor.first_name.toLowerCase().includes(search.toLowerCase())
+      filterDoctors = filterDoctors.filter(doctor => doctor.first_name
+        .toLowerCase().includes(search.toLowerCase())
       || doctor.last_name.toLowerCase().includes(search.toLowerCase()));
     }
 
@@ -120,7 +121,7 @@ class DoctorsList extends React.Component {
         }
 
         <div className="doctors-container">
-          {filterDoctors.map((doctor) => (
+          {filterDoctors.map(doctor => (
             <Doctor key={doctor.id} doc={doctor} role={role.name} history={history} />
           ))}
         </div>

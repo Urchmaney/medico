@@ -8,7 +8,7 @@ import '../styles/style.scss';
 import imgSrc from '../images/logo.svg';
 import { loginUrl } from '../helpers/constants';
 import { post } from '../helpers/api';
-import { login, addToken, changeName, } from '../actions/index';
+import { login, addToken, changeName } from '../actions/index';
 
 class Login extends React.Component {
   constructor(props) {
@@ -81,10 +81,10 @@ class Login extends React.Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   login: () => dispatch(login()),
-  addToken: (token) => dispatch(addToken(token)),
-  changeName: (name) => dispatch(changeName(name)),
+  addToken: token => dispatch(addToken(token)),
+  changeName: name => dispatch(changeName(name)),
 });
 
 Login.propTypes = {

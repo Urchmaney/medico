@@ -9,7 +9,9 @@ import { changeDoctor } from '../../actions/index';
 import '../../styles/style.scss';
 
 const Doctor = (props) => {
-  const { doc, role, history, changeDoctor } = props;
+  const {
+    doc, role, history, changeDoctor,
+  } = props;
   return (
     <div className="doctor">
       <div className="doctor-container">
@@ -57,7 +59,7 @@ Doctor.propTypes = {
 };
 
 const mapDispatchToProps = dispatch => ({
-  changeDoctor: (doc) => dispatch(changeDoctor(doc)),
+  changeDoctor: doc => dispatch(changeDoctor(doc)),
 });
 
 export default connect(null, mapDispatchToProps)(Doctor);

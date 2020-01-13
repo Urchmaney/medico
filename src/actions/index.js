@@ -17,32 +17,32 @@ const logout = () => ({
   type: LOGOUT,
 });
 
-const addToken = (token) => ({
+const addToken = token => ({
   type: ADD_TOKEN,
   token,
 });
 
-const changeRole = (role) => ({
+const changeRole = role => ({
   type: ROLE,
   role,
 });
 
-const changeDoctor = (doctor) => ({
+const changeDoctor = doctor => ({
   type: DOCTOR,
   doctor,
 });
 
-const changeAppointmentDate = (date) => ({
+const changeAppointmentDate = date => ({
   type: APPOINTMENT_DATE,
   date,
 });
 
-const changeAppointmentTime = (time) => ({
+const changeAppointmentTime = time => ({
   type: APPOINTMENT_TIME,
   time,
 });
 
-const changeName = (name) => ({
+const changeName = name => ({
   type: NAME,
   name,
 });

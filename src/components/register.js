@@ -61,7 +61,9 @@ class Register extends React.Component {
   }
 
   render() {
-    const { errors, familyName, firstName, username } = this.state;
+    const {
+      errors, familyName, firstName, username
+    } = this.state;
     const { handleChange, handleSubmit } = this;
     return (
       <main>

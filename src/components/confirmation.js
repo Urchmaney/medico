@@ -14,6 +14,7 @@ class Confirmation extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      errors: [],
       success: false,
       reason: '',
       date: props.date,
@@ -26,8 +27,10 @@ class Confirmation extends React.Component {
     this.onSuccess = this.onSuccess.bind(this);
   }
 
-  onError() {
-
+  onError(errors) {
+    this.setState(state => ({
+      ...state, errors,
+    }));
   }
 
   onSuccess() {
@@ -60,7 +63,7 @@ class Confirmation extends React.Component {
     const {
       name, doctor, role, date, time, loggedIn,
     } = this.props;
-    const { reason, success } = this.state;
+    const { reason, success, errors } = this.state;
     const { handleChange, handleSubmit } = this;
     if (!loggedIn) {
       return (<Redirect to="/login" />);
@@ -87,6 +90,9 @@ class Confirmation extends React.Component {
             </p>
           </div>
           <form>
+            <ul className="error">
+              {errors.map(error => (<li key={error}>{error}</li>))}
+            </ul>
             <label htmlFor="name">
               Your name
               <input id="name" value={name} type="text" readOnly />
