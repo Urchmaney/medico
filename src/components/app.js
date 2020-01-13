@@ -14,7 +14,6 @@ import '../helpers/fontawesome';
 import DatePicker from './date-picker';
 import Confirmation from './confirmation';
 import Appointments from './appointments';
-import Success from './success';
 
 const App = () => (
   <Router>
@@ -28,7 +27,6 @@ const App = () => (
       <Route path="/date" component={DatePicker} />
       <Route path="/confirm" component={Confirmation} />
       <Route path="/appointments" component={Appointments} />
-      <Route path="/success" component={Success} />
     </Switch>
   </Router>
 );

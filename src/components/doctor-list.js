@@ -1,6 +1,7 @@
 /* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Header from './presentation/header';
 import Doctor from './presentation/doctor';
@@ -66,8 +67,11 @@ class DoctorsList extends React.Component {
       filterShow, doctors, search, like, yr,
     } = this.state;
     const { showFilter, closeFilter, handleChange } = this;
-    const { role, history } = this.props;
+    const { role, history, loggedIn } = this.props;
     let filterDoctors = doctors;
+    if (!loggedIn) {
+      return (<Redirect to="/login" />);
+    }
     if (like) {
       const category = getCategory(like);
       filterDoctors = doctors.filter(doctor => doctor.likes_count >= category[0]
@@ -85,7 +89,7 @@ class DoctorsList extends React.Component {
 
     return (
       <main>
-        <Header name="Doctors" filter={!filterShow} filterOnClick={showFilter} />
+        <Header name="Doctors" iconOnClick={() => history.goBack()} filter={!filterShow} filterOnClick={showFilter} />
         {
           filterShow
           && (
@@ -128,12 +132,14 @@ class DoctorsList extends React.Component {
 const mapStateToProps = state => ({
   role: state.role,
   token: state.token,
+  loggedIn: state.loggedIn,
 });
 
 DoctorsList.propTypes = {
   role: PropTypes.object.isRequired,
   token: PropTypes.string.isRequired,
   history: PropTypes.object.isRequired,
+  loggedIn: PropTypes.bool.isRequired,
 };
 
 export default connect(mapStateToProps)(DoctorsList);

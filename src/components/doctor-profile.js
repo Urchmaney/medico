@@ -1,6 +1,7 @@
 /* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Header from './presentation/header';
@@ -8,11 +9,17 @@ import Button from './presentation/button';
 import Footer from './presentation/footer';
 
 const DoctorProfile = (props) => {
-  const { doctor, role, history } = props;
+  const { doctor, role, history, loggedIn } = props;
+  if (!loggedIn) {
+    return (<Redirect to="/login" />);
+  }
+  if (!doctor) {
+    history.goBack();
+  }
   return (
     <main>
       <div className="profile-con">
-        <Header color="#208f82" name=" " />
+        <Header color="#208f82" name=" " iconOnClick={() => history.goBack()} />
         <div className="doc-profile-con">
           <div className="doc-profile">
             <p>
@@ -74,7 +81,7 @@ const DoctorProfile = (props) => {
           </div>
         </div>
         <div className="appoint-btn-con">
-          <Button name="Book Appointment" onClick={() => history.push('/date') } />
+          <Button name="Book Appointment" onClick={() => history.push('/date')} />
         </div>
       </div>
       <Footer />
@@ -85,11 +92,14 @@ const DoctorProfile = (props) => {
 const mapStateToProps = state => ({
   doctor: state.doctor,
   role: state.role,
+  loggedIn: state.loggedIn,
 });
 
 DoctorProfile.propTypes = {
   doctor: PropTypes.object.isRequired,
   role: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
+  loggedIn: PropTypes.bool.isRequired,
 };
 
 export default connect(mapStateToProps)(DoctorProfile);
