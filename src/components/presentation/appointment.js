@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Appointment = (props) => {
-  const { date } = props;
+  const { date, name } = props;
   return (
     <div className="appointment-con">
       <span className="mark">
@@ -12,17 +12,19 @@ const Appointment = (props) => {
       </span>
       <p>
         <span><FontAwesomeIcon icon="bell" /></span>
-        {date.toLocaleString()}
+        {new Date(date).toString().split(' ', 4).join(' ')}
       </p>
       <p>
-        Upcoming appointment with Dr. Joh Doe
+        Upcoming appointment with Dr.&nbsp;
+        {name}
       </p>
     </div>
   );
 };
 
 Appointment.propTypes = {
-  date: PropTypes.object.isRequired,
+  date: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
 };
 
 export default Appointment;
