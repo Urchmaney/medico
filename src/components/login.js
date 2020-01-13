@@ -8,7 +8,7 @@ import '../styles/style.scss';
 import imgSrc from '../images/logo.svg';
 import { loginUrl } from '../helpers/constants';
 import { post } from '../helpers/api';
-import { login, addToken } from '../actions/index';
+import { login, addToken, changeName, } from '../actions/index';
 
 class Login extends React.Component {
   constructor(props) {
@@ -25,10 +25,11 @@ class Login extends React.Component {
 
   onSuccessLogin(result) {
     const {
-      login, addToken, history,
+      login, addToken, history, changeName,
     } = this.props;
     login();
     addToken(result.token);
+    changeName(`${result.user.first_name} ${result.user.last_name}`);
     history.push('/dashboard');
   }
 
@@ -83,12 +84,14 @@ class Login extends React.Component {
 const mapDispatchToProps = (dispatch) => ({
   login: () => dispatch(login()),
   addToken: (token) => dispatch(addToken(token)),
+  changeName: (name) => dispatch(changeName(name)),
 });
 
 Login.propTypes = {
   login: PropTypes.func.isRequired,
   addToken: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired,
+  changeName: PropTypes.func.isRequired,
 };
 
 export default connect(null, mapDispatchToProps)(Login);
