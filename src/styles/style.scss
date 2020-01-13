@@ -309,11 +309,29 @@ footer{
 } 
 
 .date-time{
-  .time-con{
-    display: flex;
-    width: 150px;
-    overflow: scroll;
-  }  
+  form{
+    label{
+      display: block;
+      padding: 20px;
+    }
+    input{
+      display: block;
+      margin: auto;
+      height: 50px;
+      border-radius: 10px;
+      border: 1px solid gray;
+      &[type='date']{
+        width: 70%;
+        padding-left: 15px;
+        font-size: 18px;
+      }
+      &[type='time']{
+        width: 60%;
+        padding-left: 25px;
+        font-size: 20px;
+      }
+    }
+  } 
   .btn-con{
     text-align: center;
   }
@@ -436,6 +454,8 @@ footer{
     position: absolute;
     text-align: center;
     top: -5px;
+    font-size: 12px;
+    color: $dark-color;
     span{
       display: block;
       background-color: $dark-color;
@@ -448,14 +468,108 @@ footer{
       left: -25px;
     }
     &:nth-of-type(2){
-      left: 50%;
+      left: 43%;
     }
     &:nth-of-type(3){
-      right: -48px;
+      right: -32px;
       span{
         background-color: white;
         border: 1px solid $dark-color;
       }
+    }
+  }
+}
+
+.success{
+  .img-con{
+    text-align: center;
+    margin-top: 20px;
+  }
+  img{
+    height: 300px;
+    width: 70%;
+  }
+  p{
+    text-align: center;
+    padding: 10px;
+  }
+  hr{
+    width: 50%;
+    margin: auto;
+  }
+  h3{
+    text-align: center;
+    color: #5d899c;
+  }
+  a{
+    display: block;
+    background-color: $dark-color;
+    text-align: center;
+    width: 80%;
+    margin: auto;
+    margin-top: 10px;
+    border-radius: 10px;
+    height: 45px;
+    text-decoration: none;
+    padding: 10px;
+    color: white;
+  }
+}
+
+.dashboard{
+  position: relative;
+}
+
+.menu{
+  height: 700px;
+  width: 70%;
+  z-index: 1;
+  position: absolute;
+  background-color: #e1fff7;
+  .menu-profile{
+    padding: 30px;
+    display: flex;
+    height: 100px;
+    background-color: #2cbba9;
+    position: relative;
+    color: white;
+    .closeMenu{
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      color: white;
+      font-size: 19px;
+    }
+    span{
+      display: inline-block;
+      margin-left: 20px;
+      margin-top: 10px;
+    }
+    .profile{
+      display: block;
+      padding: 10px;
+      width: 6vh;
+      height: 6vh;
+      margin-right: 5px;
+      text-align: center;
+      border:1px solid white;
+      border-radius: 30vh;
+      color : white;
+    }
+  }
+  ul{
+    list-style: none;
+    height: 100%;
+    li{
+      padding: 20px;
+      border-bottom: 1px solid lightgray;
+      a{
+        text-decoration: none;
+        color: $dark-color;
+        font-weight: bold;
+        cursor: pointer;
+      }
+     
     }
   }
 }
