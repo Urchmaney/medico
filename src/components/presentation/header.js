@@ -11,6 +11,8 @@ const Header = (props) => {
     filter,
     filterOnClick,
     searchOnChange,
+    iconOnClick,
+    menuIcon,
   } = props;
   const style = {
     height: search ? 100 : 70,
@@ -19,8 +21,9 @@ const Header = (props) => {
   return (
     <header className="header" style={style}>
       <div>
-        <span>
-          <FontAwesomeIcon icon="chevron-left" />
+        <span role="button" onClick={iconOnClick} onKeyDown={() => {}} tabIndex="0">
+          {!menuIcon && <FontAwesomeIcon icon="chevron-left" />}
+          {menuIcon && <FontAwesomeIcon icon="bars" />}
         </span>
         <span>
           {name}
@@ -52,14 +55,18 @@ Header.propTypes = {
   searchOnChange: PropTypes.func,
   filter: PropTypes.bool,
   search: PropTypes.bool,
+  iconOnClick: PropTypes.func,
+  menuIcon: PropTypes.bool,
 };
 
 Header.defaultProps = {
   filterOnClick: () => {},
   searchOnChange: () => {},
+  iconOnClick: () => {},
   search: false,
   filter: false,
   color: '#e1fff7',
+  menuIcon: false,
 };
 
 export default Header;
