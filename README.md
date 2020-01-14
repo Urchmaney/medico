@@ -2,7 +2,7 @@
 Medico is a simple application that helps users get appointments with doctors of different specialty.
 It provides list of doctors in a particular field of practice with their profile informations.<br>
 This repository is the front-end section (React) which makes API calls to the [backend section buillt with rails.](https://github.com/Urchmaney/medico-backend).<br>
-[The live link.](https://medico-backend.herokuapp.com)
+[The live link.](https://medico-mobile.herokuapp.com/)
 
 # Technologies
  * Javascript
