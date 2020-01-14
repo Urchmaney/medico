@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Menu = (props) => {
-  const { name, closeClicked } = props;
+  const { name, closeClicked, logOut } = props;
   return (
     <nav className="menu">
       <div className="menu-profile">
@@ -20,7 +20,7 @@ const Menu = (props) => {
         <li>
           <Link to="/appointments">My Appointments</Link>
         </li>
-        <li>
+        <li onClick={logOut} role="presentation">
           <Link to="/">Logout</Link>
         </li>
       </ul>
@@ -31,6 +31,7 @@ const Menu = (props) => {
 Menu.propTypes = {
   name: PropTypes.string.isRequired,
   closeClicked: PropTypes.func.isRequired,
+  logOut: PropTypes.func.isRequired,
 };
 
 export default Menu;

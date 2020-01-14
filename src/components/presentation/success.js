@@ -23,7 +23,7 @@ const Success = (props) => {
           Your appointment with Dr&nbsp;
           {docName}
           &nbsp;on&nbsp;
-          {date}
+          {new Date(date).toString().split(' ', 4).join(' ')}
           &nbsp;at&nbsp;
           {time}
           &nbsp;is confirmed.

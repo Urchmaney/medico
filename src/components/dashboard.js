@@ -10,7 +10,7 @@ import Footer from './presentation/footer';
 import Menu from './presentation/menu';
 import { get } from '../helpers/api';
 import { rolesUrl } from '../helpers/constants';
-import { changeRole } from '../actions/index';
+import { changeRole, logout, addToken } from '../actions/index';
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -23,6 +23,7 @@ class Dashboard extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.showMenuBar = this.showMenuBar.bind(this);
     this.hideMenu = this.hideMenu.bind(this);
+    this.logoutUser = this.logoutUser.bind(this);
   }
 
   componentDidMount() {
@@ -57,13 +58,19 @@ class Dashboard extends React.Component {
     }));
   }
 
+  logoutUser() {
+    const { logout, addToken, history } = this.props;
+    logout();
+    addToken('');
+    history.push('/');
+  }
 
   render() {
     const { roles, search, showMenu } = this.state;
     const {
       changeRole, history, name, loggedIn,
     } = this.props;
-    const { showMenuBar, hideMenu } = this;
+    const { showMenuBar, hideMenu, logoutUser } = this;
     let searchRoles = roles;
     if (!loggedIn) {
       return (<Redirect to="/login" />);
@@ -74,7 +81,7 @@ class Dashboard extends React.Component {
     return (
       <main>
         <div className="container dashboard">
-          {showMenu && <Menu name={name} closeClicked={hideMenu} />}
+          {showMenu && <Menu name={name} closeClicked={hideMenu} logOut={logoutUser} />}
           <Header name="Roles" search searchOnChange={this.handleChange} iconOnClick={showMenuBar} menuIcon />
           <p className="space" />
           <Image src={imgsrc} />
@@ -109,10 +116,14 @@ Dashboard.propTypes = {
   changeRole: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired,
   loggedIn: PropTypes.bool.isRequired,
+  logout: PropTypes.func.isRequired,
+  addToken: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = dispatch => ({
   changeRole: role => dispatch(changeRole(role)),
+  logout: () => dispatch(logout()),
+  addToken: token => dispatch(addToken(token)),
 });
 
 const mapStateToProps = state => ({

@@ -61,7 +61,7 @@ class Confirmation extends React.Component {
 
   render() {
     const {
-      name, doctor, role, date, time, loggedIn,
+      name, doctor, role, date, time, loggedIn, history,
     } = this.props;
     const { reason, success, errors } = this.state;
     const { handleChange, handleSubmit } = this;
@@ -74,7 +74,7 @@ class Confirmation extends React.Component {
     return (
       <main>
         <div className="confirmation container">
-          <Header name="Confirmation" />
+          <Header name="Confirmation" iconOnClick={() => history.goBack()} />
           <Status detail payment />
           <div className="info">
             <p>
@@ -128,6 +128,7 @@ Confirmation.propTypes = {
   time: PropTypes.string.isRequired,
   token: PropTypes.string.isRequired,
   loggedIn: PropTypes.bool.isRequired,
+  history: PropTypes.object.isRequired,
 };
 
 export default connect(mapStateToProps)(Confirmation);
