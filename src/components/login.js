@@ -1,6 +1,7 @@
 /* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Image from './presentation/image';
 import Footer from './presentation/footer';
@@ -74,6 +75,7 @@ class Login extends React.Component {
           </ul>
           <input id="login" value={username} onChange={handleChange} type="text" placeholder="login" />
           <input type="button" onClick={handleSubmit} value="Login" />
+          <Link className="auth-link" to="/register"> Register </Link>
         </form>
         <Footer />
       </main>

@@ -18,6 +18,7 @@ const DoctorProfile = (props) => {
   if (!doctor) {
     history.goBack();
   }
+  const educations = doctor.educations.split('--');
   return (
     <main>
       <div className="profile-con">
@@ -57,28 +58,16 @@ const DoctorProfile = (props) => {
         <div>
           <div className="info-con">
             <h3>
-              Education
+              Educations
             </h3>
             <ul>
-              <li>
-                MD-General Medicine
-              </li>
-              <li>
-                MBBS- Nephrology
-              </li>
-            </ul>
-          </div>
-          <div className="info-con">
-            <h3>
-              Speciliazation
-            </h3>
-            <ul>
-              <li>
-                MD-General Medicine
-              </li>
-              <li>
-                MBBS- Nephrology
-              </li>
+              {
+                educations.map(e => (
+                  <li key={e}>
+                    {e}
+                  </li>
+                ))
+            }
             </ul>
           </div>
         </div>

@@ -1,5 +1,6 @@
 /* eslint-disable react/forbid-prop-types */
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { post } from '../helpers/api';
@@ -78,6 +79,7 @@ class Register extends React.Component {
           <input type="text" name="firstName" value={firstName} onChange={handleChange} placeholder="First Name" />
           <input type="text" name="username" value={username} onChange={handleChange} placeholder="Username" />
           <input type="button" onClick={handleSubmit} value="Register" />
+          <Link className="auth-link" to="/login"> Login </Link>
         </form>
         <Footer />
       </main>

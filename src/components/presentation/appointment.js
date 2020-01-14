@@ -5,17 +5,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Appointment = (props) => {
   const { date, name } = props;
+  const dDate = new Date(date);
   return (
     <div className="appointment-con">
-      <span className="mark">
+      <span className="mark" style={{ backgroundColor: dDate > new Date() ? 'green' : 'lightGray' }}>
         <FontAwesomeIcon icon="check" />
       </span>
       <p>
         <span><FontAwesomeIcon icon="bell" /></span>
-        {new Date(date).toString().split(' ', 4).join(' ')}
+        {dDate.toString().split(' ', 4).join(' ')}
       </p>
       <p>
-        Upcoming appointment with Dr.&nbsp;
+        {dDate > new Date() ? 'Upcoming ' : 'past '}
+         appointment with Dr.&nbsp;
         {name}
       </p>
     </div>

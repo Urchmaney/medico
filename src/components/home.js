@@ -16,7 +16,7 @@ const Home = (props) => {
         <p className="home-text">Sign in to continue.</p>
         <Button name="Login" onClick={() => history.push('/login')} />
         <p className="orSeperator">or</p>
-        <Button name="Register" />
+        <Button name="Register" onClick={() => history.push('/register')} />
       </div>
       <Footer />
     </main>
