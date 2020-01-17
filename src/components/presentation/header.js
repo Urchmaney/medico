@@ -25,9 +25,9 @@ const Header = (props) => {
           {!menuIcon && <FontAwesomeIcon icon="chevron-left" />}
           {menuIcon && <FontAwesomeIcon icon="bars" />}
         </span>
-        <span>
+        <h1>
           {name}
-        </span>
+        </h1>
       </div>
       {
       search && (

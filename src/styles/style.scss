@@ -112,11 +112,15 @@ footer{
   div{
     padding-top: 20px;
     font-size: 20px;
+    display: flex;
     span{
       display: inline-block;
       :nth-child(1){
         width: 70px;
       }
+    }
+    h1{
+      font-size: 22px;
     }
   }  
   .search-container{
