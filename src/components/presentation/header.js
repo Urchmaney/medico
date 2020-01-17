@@ -20,7 +20,7 @@ const Header = (props) => {
   };
   return (
     <header className="header" style={style}>
-      <div>
+      <div className="top">
         <span role="button" onClick={iconOnClick} onKeyDown={() => {}} tabIndex="0">
           {!menuIcon && <FontAwesomeIcon icon="chevron-left" />}
           {menuIcon && <FontAwesomeIcon icon="bars" />}

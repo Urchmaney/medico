@@ -107,9 +107,8 @@ footer{
 
 .header{
   color: $dark-color;
-  position: relative;
-  
-  div{
+  position: relative;  
+  .top{
     padding-top: 20px;
     font-size: 20px;
     display: flex;
