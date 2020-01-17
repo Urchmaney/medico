@@ -69,7 +69,7 @@ class Confirmation extends React.Component {
       return (<Redirect to="/login" />);
     }
     if (success) {
-      return (<Success docName={`${doctor.first_name} ${doctor.last_name}`} date={date} time={time} />);
+      return (<Success backOnClick={() => history.goBack()} docName={`${doctor.first_name} ${doctor.last_name}`} date={date} time={time} />);
     }
     return (
       <main>

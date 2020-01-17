@@ -7,11 +7,13 @@ import imgSrc from '../../images/success.svg';
 import '../../styles/style.scss';
 
 const Success = (props) => {
-  const { docName, date, time } = props;
+  const {
+    docName, date, time, backOnClick,
+  } = props;
   return (
     <main>
       <div className="container success">
-        <Header name="Success" />
+        <Header name="Success" iconOnClick={backOnClick} />
         <Status detail payment confirm />
         <div className="img-con">
           <img src={imgSrc} alt="success" />
@@ -39,6 +41,11 @@ Success.propTypes = {
   docName: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
   time: PropTypes.string.isRequired,
+  backOnClick: PropTypes.func,
+};
+
+Success.defaultProps = {
+  backOnClick: () => {},
 };
 
 export default Success;
