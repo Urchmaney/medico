@@ -4,7 +4,11 @@ It provides list of doctors in a particular field of practice with their profile
 This repository is the front-end section (React) which makes API calls to the [backend section buillt with rails.](https://github.com/Urchmaney/medico-backend).<br>
 [The live link.](https://medico-mobile.herokuapp.com/)
 
-# Technologies
+<div style="text-align: center">
+    <img src="src/images/screen-shot.png" height="500" />
+</div>
+
+## Technologies
  * Javascript
  * React framework
 
