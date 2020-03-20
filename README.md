@@ -20,7 +20,9 @@ This repository is the front-end section (React) which makes API calls to the [b
   * clone repository but running `git clone https://github.com/Urchmaney/medico.git` on command prompt.
   * Run `npm install` to install all dependencies.
   * Run `npm start` to start application on local server.
-
+## Future Feature
+- Improve User Interface
+- Add video meetings.
 # Author 
 Unegbu Kingsley
 * Github: [@urchmaney](https://www.github.com/Urchmaney)
