@@ -26,7 +26,8 @@ This repository is the front-end section (React) which makes API calls to the [b
 # Author 
 Unegbu Kingsley
 * Github: [@urchmaney](https://www.github.com/Urchmaney)
-* LinkedIn: [@urchmaney](https://www.linkedin.com/in/kingsley-uche-126248132/)
+* LinkedIn: [@urchmaney](https://www.linkedin.com/in/kingsley-uche/)
+* Email :  Kingsobino@gmail.com
 
 # Credit
  Awesome design Idea by [Vinisha Panjikar on Behance](https://www.behance.net/vinishapanjikar)
