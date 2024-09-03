@@ -73,8 +73,10 @@ class Login extends React.Component {
           <ul className="error">
             {errors.map((error) => (<li key={error}>{error}</li>))}
           </ul>
-          <input id="login" value={username} onChange={handleChange} type="text" placeholder="login" />
-          <input type="button" onClick={handleSubmit} value="Login" />
+          <div className="form-block">
+            <input id="login" value={username} onChange={handleChange} type="text" placeholder="login" />
+            <input type="button" onClick={handleSubmit} value="Login" />
+          </div>
           <Link className="auth-link" to="/register"> Register </Link>
         </form>
         <Footer />

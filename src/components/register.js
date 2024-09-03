@@ -76,10 +76,12 @@ class Register extends React.Component {
           <ul className="error">
             {errors.map((error) => (<li key={error}>{error}</li>))}
           </ul>
-          <input type="text" name="familyName" value={familyName} onChange={handleChange} placeholder="Family Name" />
-          <input type="text" name="firstName" value={firstName} onChange={handleChange} placeholder="First Name" />
-          <input type="text" name="username" value={username} onChange={handleChange} placeholder="Username" />
-          <input type="button" onClick={handleSubmit} value="Register" />
+          <div className="form-block">
+            <input type="text" name="familyName" value={familyName} onChange={handleChange} placeholder="Family Name" />
+            <input type="text" name="firstName" value={firstName} onChange={handleChange} placeholder="First Name" />
+            <input type="text" name="username" value={username} onChange={handleChange} placeholder="Username" />
+            <input type="button" onClick={handleSubmit} value="Register" />
+          </div>
           <Link className="auth-link" to="/login"> Login </Link>
         </form>
         <Footer />
