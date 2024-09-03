@@ -25,25 +25,9 @@ class Register extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  onSuccessLogin(result) {
-    const {
-      login, addToken, history, changeName,
-    } = this.props;
-    login();
-    changeName(`${result.user.first_name} ${result.user.last_name}`);
-    addToken(result.token);
-    history.push('/dashboard');
-  }
-
-  onErrorLogin(errors) {
-    this.setState(state => ({
-      ...state, errors: [...errors],
-    }));
-  }
-
   handleChange(event) {
     const { name, value } = event.target;
-    this.setState(state => ({
+    this.setState((state) => ({
       ...state, [name]: value,
     }));
   }
@@ -62,6 +46,22 @@ class Register extends React.Component {
     });
   }
 
+  onSuccessLogin(result) {
+    const {
+      login, addToken, history, changeName,
+    } = this.props;
+    login();
+    changeName(`${result.user.first_name} ${result.user.last_name}`);
+    addToken(result.token);
+    history.push('/dashboard');
+  }
+
+  onErrorLogin(errors) {
+    this.setState((state) => ({
+      ...state, errors: [...errors],
+    }));
+  }
+
   render() {
     const {
       errors, familyName, firstName, username,
@@ -74,7 +74,7 @@ class Register extends React.Component {
           <h3 className="home-header">Register</h3>
           <p className="home-text">details.</p>
           <ul className="error">
-            {errors.map(error => (<li key={error}>{error}</li>))}
+            {errors.map((error) => (<li key={error}>{error}</li>))}
           </ul>
           <input type="text" name="familyName" value={familyName} onChange={handleChange} placeholder="Family Name" />
           <input type="text" name="firstName" value={firstName} onChange={handleChange} placeholder="First Name" />
@@ -88,10 +88,10 @@ class Register extends React.Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   login: () => dispatch(login()),
-  addToken: token => dispatch(addToken(token)),
-  changeName: name => dispatch(changeName(name)),
+  addToken: (token) => dispatch(addToken(token)),
+  changeName: (name) => dispatch(changeName(name)),
 });
 
 Register.propTypes = {

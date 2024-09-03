@@ -8,7 +8,7 @@ const Menu = (props) => {
   return (
     <nav className="menu">
       <div className="menu-profile">
-        <span className="closeMenu" onClick={closeClicked} role="button" tabIndex={0} onKeyDown={() => {}}>
+        <span className="closeMenu" aria-label="font" onClick={closeClicked} role="button" tabIndex={0} onKeyDown={() => {}}>
           <FontAwesomeIcon icon="times" />
         </span>
         <FontAwesomeIcon className="profile" icon="user" />

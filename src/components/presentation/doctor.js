@@ -58,8 +58,8 @@ Doctor.propTypes = {
   role: PropTypes.string.isRequired,
 };
 
-const mapDispatchToProps = dispatch => ({
-  changeDoctor: doc => dispatch(changeDoctor(doc)),
+const mapDispatchToProps = (dispatch) => ({
+  changeDoctor: (doc) => dispatch(changeDoctor(doc)),
 });
 
 export default connect(null, mapDispatchToProps)(Doctor);

@@ -10,7 +10,7 @@ const loginUrl = 'http://localhost:3000/api/v1/sessions';
 const registerUrl = 'http://localhost:3000/api/v1/users';
 const rolesUrl = 'http://localhost:3000/api/v1/roles';
 const appointmentsUrl = 'http://localhost:3000/api/v1/appointments';
-const roleUrl = id => `${rolesUrl}/${id}`;
+const roleUrl = (id) => `${rolesUrl}/${id}`;
 
 export {
   loginUrl,

@@ -17,7 +17,7 @@ const Appointment = (props) => {
       </p>
       <p>
         {dDate > new Date() ? 'Upcoming ' : 'past '}
-         appointment with Dr.&nbsp;
+        appointment with Dr.&nbsp;
         {name}
       </p>
     </div>

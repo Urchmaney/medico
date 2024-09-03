@@ -62,7 +62,7 @@ const DoctorProfile = (props) => {
             </h3>
             <ul>
               {
-                educations.map(e => (
+                educations.map((e) => (
                   <li key={e}>
                     {e}
                   </li>
@@ -80,7 +80,7 @@ const DoctorProfile = (props) => {
   );
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   doctor: state.doctor,
   role: state.role,
   loggedIn: state.loggedIn,

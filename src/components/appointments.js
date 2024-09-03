@@ -8,7 +8,6 @@ import Header from './presentation/header';
 import { get } from '../helpers/api';
 import { appointmentsUrl } from '../helpers/constants';
 
-
 class Appointments extends React.Component {
   constructor(props) {
     super(props);
@@ -22,7 +21,7 @@ class Appointments extends React.Component {
     const getResult = get(appointmentsUrl, token);
     getResult.then((result) => {
       if (!result.error) {
-        this.setState(state => ({
+        this.setState((state) => ({
           ...state, appointments: result,
         }));
       }
@@ -40,7 +39,7 @@ class Appointments extends React.Component {
         <div className="container">
           <Header name="Appointments" iconOnClick={() => history.goBack()} />
           <div className="appoint-list-con">
-            {appointments.map(e => (
+            {appointments.map((e) => (
               <Appointment key={e.id} date={e.date} name={`${e.doctor.first_name} ${e.doctor.last_name}`} />
             ))}
           </div>
@@ -50,7 +49,7 @@ class Appointments extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   token: state.token,
   loggedIn: state.loggedIn,
 });
