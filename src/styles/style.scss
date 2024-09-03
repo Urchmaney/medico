@@ -11,12 +11,13 @@ $bg-color: #e1fff7;
 }
 
 main{
-  min-height: 750px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #e1fff7;
 }
 
-.container{
-  min-height: 750px;
-}
 
 .error{
   color: red;
@@ -37,6 +38,7 @@ main{
 
 .button{
   width: 80%;
+  max-width: 500px;
   height: 40px;
   border-radius: 20px;
   border: none;
@@ -45,6 +47,13 @@ main{
   color: white;
   font-weight: bold;
   cursor: pointer;
+}
+
+.form-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
 }
 
 footer{
@@ -80,6 +89,7 @@ footer{
   }
   input{
     width: 80%;
+    max-width: 500px;
     height: 40px;
     border-radius: 20px;
     border: none;
