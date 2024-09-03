@@ -39,7 +39,7 @@ const Header = (props) => {
       }
       {
         filter && (
-        <button type="button" className="filter-btn" onClick={filterOnClick}>
+        <button type="button" className="filter-btn" onClick={filterOnClick} aria-label="button">
           <FontAwesomeIcon icon="sliders-h" />
         </button>
         )

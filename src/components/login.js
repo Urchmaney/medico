@@ -24,25 +24,9 @@ class Login extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  onSuccessLogin(result) {
-    const {
-      login, addToken, history, changeName,
-    } = this.props;
-    login();
-    addToken(result.token);
-    changeName(`${result.user.first_name} ${result.user.last_name}`);
-    history.push('/dashboard');
-  }
-
-  onErrorLogin(errors) {
-    this.setState(state => ({
-      ...state, errors: [errors],
-    }));
-  }
-
   handleChange(event) {
     const { value } = event.target;
-    this.setState(state => ({
+    this.setState((state) => ({
       ...state, username: value,
     }));
   }
@@ -61,6 +45,22 @@ class Login extends React.Component {
     });
   }
 
+  onSuccessLogin(result) {
+    const {
+      login, addToken, history, changeName,
+    } = this.props;
+    login();
+    addToken(result.token);
+    changeName(`${result.user.first_name} ${result.user.last_name}`);
+    history.push('/dashboard');
+  }
+
+  onErrorLogin(errors) {
+    this.setState((state) => ({
+      ...state, errors: [errors],
+    }));
+  }
+
   render() {
     const { username, errors } = this.state;
     const { handleChange, handleSubmit } = this;
@@ -71,7 +71,7 @@ class Login extends React.Component {
           <h3 className="home-header">Login</h3>
           <p className="home-text">Login with your username. </p>
           <ul className="error">
-            {errors.map(error => (<li key={error}>{error}</li>))}
+            {errors.map((error) => (<li key={error}>{error}</li>))}
           </ul>
           <input id="login" value={username} onChange={handleChange} type="text" placeholder="login" />
           <input type="button" onClick={handleSubmit} value="Login" />
@@ -83,10 +83,10 @@ class Login extends React.Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   login: () => dispatch(login()),
-  addToken: token => dispatch(addToken(token)),
-  changeName: name => dispatch(changeName(name)),
+  addToken: (token) => dispatch(addToken(token)),
+  changeName: (name) => dispatch(changeName(name)),
 });
 
 Login.propTypes = {

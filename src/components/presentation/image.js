@@ -8,7 +8,7 @@ const Image = (props) => {
     <div className="site-image">
       <img src={src} alt="logo" />
       <h3>
-      MEDI
+        MEDI
         <span>CO</span>
       </h3>
     </div>

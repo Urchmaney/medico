@@ -13,7 +13,7 @@ const likesCategory = ['0-50', '50-100', '100-200', '200-400', '400 - above'];
 const yrCategory = ['0-3', '4-7', '7-10', '10-13', '14-above'];
 const getCategory = (category) => {
   const values = category.split('-');
-  return values.map(element => (
+  return values.map((element) => (
     Number.isNaN(element) ? Infinity : Number(element)
   ));
 };
@@ -37,16 +37,17 @@ class DoctorsList extends React.Component {
     const { role, token } = this.props;
     const getResult = get(roleUrl(role.id), token);
     getResult.then((result) => {
-      this.setState(state => ({
+      this.setState((state) => ({
         ...state, doctors: [...result],
       }));
     });
   }
 
-  showFilter() {
-    this.setState({
-      filterShow: true,
-    });
+  handleChange(event) {
+    const { value, name } = event.target;
+    this.setState((state) => ({
+      ...state, [name]: value,
+    }));
   }
 
   closeFilter() {
@@ -55,11 +56,10 @@ class DoctorsList extends React.Component {
     });
   }
 
-  handleChange(event) {
-    const { value, name } = event.target;
-    this.setState(state => ({
-      ...state, [name]: value,
-    }));
+  showFilter() {
+    this.setState({
+      filterShow: true,
+    });
   }
 
   render() {
@@ -74,16 +74,16 @@ class DoctorsList extends React.Component {
     }
     if (like) {
       const category = getCategory(like);
-      filterDoctors = doctors.filter(doctor => doctor.likes_count >= category[0]
+      filterDoctors = doctors.filter((doctor) => doctor.likes_count >= category[0]
       && doctor.likes_count <= category[1]);
     }
     if (yr) {
       const category = getCategory(yr);
-      filterDoctors = filterDoctors.filter(doctor => doctor.years_experience >= category[0]
+      filterDoctors = filterDoctors.filter((doctor) => doctor.years_experience >= category[0]
       && doctor.years_experience <= category[1]);
     }
     if (search) {
-      filterDoctors = filterDoctors.filter(doctor => doctor.first_name
+      filterDoctors = filterDoctors.filter((doctor) => doctor.first_name
         .toLowerCase().includes(search.toLowerCase())
       || doctor.last_name.toLowerCase().includes(search.toLowerCase()));
     }
@@ -99,7 +99,7 @@ class DoctorsList extends React.Component {
             <input type="text" name="search" value={search} onChange={handleChange} placeholder="search name" />
             <select name="yr" onChange={handleChange}>
               <option value="">yr Experience</option>
-              {yrCategory.map(category => (
+              {yrCategory.map((category) => (
                 <option value={category} key={category}>
                   {category}
                 </option>
@@ -107,7 +107,7 @@ class DoctorsList extends React.Component {
             </select>
             <select name="like" onChange={handleChange}>
               <option value="">Likes</option>
-              {likesCategory.map(category => (
+              {likesCategory.map((category) => (
                 <option value={category} key={category}>
                   {category}
                 </option>
@@ -121,7 +121,7 @@ class DoctorsList extends React.Component {
         }
 
         <div className="doctors-container">
-          {filterDoctors.map(doctor => (
+          {filterDoctors.map((doctor) => (
             <Doctor key={doctor.id} doc={doctor} role={role.name} history={history} />
           ))}
         </div>
@@ -130,7 +130,7 @@ class DoctorsList extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   role: state.role,
   token: state.token,
   loggedIn: state.loggedIn,

@@ -31,7 +31,7 @@ class Dashboard extends React.Component {
     const getResult = get(rolesUrl, token);
     getResult.then((result) => {
       if (!result.error) {
-        this.setState(state => ({
+        this.setState((state) => ({
           ...state, roles: result,
         }));
       }
@@ -40,20 +40,19 @@ class Dashboard extends React.Component {
 
   handleChange(event) {
     const { value } = event.target;
-    this.setState(state => ({
+    this.setState((state) => ({
       ...state, search: value,
     }));
   }
 
   showMenuBar() {
-    this.setState(state => ({
+    this.setState((state) => ({
       ...state, showMenu: true,
     }));
   }
 
-
   hideMenu() {
-    this.setState(state => ({
+    this.setState((state) => ({
       ...state, showMenu: false,
     }));
   }
@@ -76,7 +75,7 @@ class Dashboard extends React.Component {
       return (<Redirect to="/login" />);
     }
     if (search) {
-      searchRoles = roles.filter(role => role.name.toLowerCase().includes(search.toLowerCase()));
+      searchRoles = roles.filter((role) => role.name.toLowerCase().includes(search.toLowerCase()));
     }
     return (
       <main>
@@ -95,7 +94,7 @@ class Dashboard extends React.Component {
             </p>
             <div className="category">
               {
-                searchRoles.map(category => (
+                searchRoles.map((category) => (
                   <div role="presentation" className="category-unit" key={category.id} onClick={() => { changeRole(category); history.push('/doctors'); }}>
                     {category.name}
                   </div>
@@ -120,13 +119,13 @@ Dashboard.propTypes = {
   addToken: PropTypes.func.isRequired,
 };
 
-const mapDispatchToProps = dispatch => ({
-  changeRole: role => dispatch(changeRole(role)),
+const mapDispatchToProps = (dispatch) => ({
+  changeRole: (role) => dispatch(changeRole(role)),
   logout: () => dispatch(logout()),
-  addToken: token => dispatch(addToken(token)),
+  addToken: (token) => dispatch(addToken(token)),
 });
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   token: state.token,
   name: state.name,
   loggedIn: state.loggedIn,

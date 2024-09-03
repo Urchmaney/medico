@@ -25,7 +25,7 @@ class DatePicker extends React.Component {
 
   handleChange(event) {
     const { name, value } = event.target;
-    this.setState(state => ({
+    this.setState((state) => ({
       ...state, [name]: value,
     }));
   }
@@ -56,11 +56,11 @@ class DatePicker extends React.Component {
           <Header name="Booking" iconOnClick={() => history.goBack()} />
           <form>
             <label htmlFor="date">
-               Date
+              Date
               <input id="date" type="date" onChange={handleChange} name="date" />
             </label>
             <label htmlFor="time">
-            Time
+              Time
               <input id="time" type="time" name="time" onChange={handleChange} />
             </label>
             <div className="btn-con">
@@ -99,12 +99,12 @@ class DatePicker extends React.Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  changeAppointmentDate: date => dispatch(changeAppointmentDate(date)),
-  changeAppointmentTime: time => dispatch(changeAppointmentTime(time)),
+const mapDispatchToProps = (dispatch) => ({
+  changeAppointmentDate: (date) => dispatch(changeAppointmentDate(date)),
+  changeAppointmentTime: (time) => dispatch(changeAppointmentTime(time)),
 });
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   doctor: state.doctor,
   role: state.role,
   loggedIn: state.loggedIn,

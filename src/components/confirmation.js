@@ -27,21 +27,9 @@ class Confirmation extends React.Component {
     this.onSuccess = this.onSuccess.bind(this);
   }
 
-  onError(errors) {
-    this.setState(state => ({
-      ...state, errors,
-    }));
-  }
-
-  onSuccess() {
-    this.setState(state => ({
-      ...state, success: true,
-    }));
-  }
-
   handleChange(event) {
     const { name, value } = event.target;
-    this.setState(state => ({
+    this.setState((state) => ({
       ...state, [name]: value,
     }));
   }
@@ -57,6 +45,18 @@ class Confirmation extends React.Component {
         onSuccess(result);
       }
     });
+  }
+
+  onError(errors) {
+    this.setState((state) => ({
+      ...state, errors,
+    }));
+  }
+
+  onSuccess() {
+    this.setState((state) => ({
+      ...state, success: true,
+    }));
   }
 
   render() {
@@ -91,7 +91,7 @@ class Confirmation extends React.Component {
           </div>
           <form>
             <ul className="error">
-              {errors.map(error => (<li key={error}>{error}</li>))}
+              {errors.map((error) => (<li key={error}>{error}</li>))}
             </ul>
             <label htmlFor="name">
               Your name
@@ -110,7 +110,7 @@ class Confirmation extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   doctor: state.doctor,
   name: state.name,
   role: state.role,
