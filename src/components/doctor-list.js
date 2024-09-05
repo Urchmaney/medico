@@ -90,40 +90,42 @@ class DoctorsList extends React.Component {
 
     return (
       <main>
-        <Header name="Doctors" iconOnClick={() => history.goBack()} filter={!filterShow} filterOnClick={showFilter} />
-        {
-          filterShow
-          && (
-          <div className="filter">
-            <span className="filter-text">Filter :</span>
-            <input type="text" name="search" value={search} onChange={handleChange} placeholder="search name" />
-            <select name="yr" onChange={handleChange}>
-              <option value="">yr Experience</option>
-              {yrCategory.map((category) => (
-                <option value={category} key={category}>
-                  {category}
-                </option>
-              ))}
-            </select>
-            <select name="like" onChange={handleChange}>
-              <option value="">Likes</option>
-              {likesCategory.map((category) => (
-                <option value={category} key={category}>
-                  {category}
-                </option>
-              ))}
-            </select>
-            <button className="close" onClick={closeFilter} type="button">
-              X
-            </button>
-          </div>
-          )
-        }
+        <div>
+          <Header name="Doctors" iconOnClick={() => history.goBack()} filter={!filterShow} filterOnClick={showFilter} />
+          {
+            filterShow
+            && (
+            <div className="filter">
+              <span className="filter-text">Filter :</span>
+              <input type="text" name="search" value={search} onChange={handleChange} placeholder="search name" />
+              <select name="yr" onChange={handleChange}>
+                <option value="">yr Experience</option>
+                {yrCategory.map((category) => (
+                  <option value={category} key={category}>
+                    {category}
+                  </option>
+                ))}
+              </select>
+              <select name="like" onChange={handleChange}>
+                <option value="">Likes</option>
+                {likesCategory.map((category) => (
+                  <option value={category} key={category}>
+                    {category}
+                  </option>
+                ))}
+              </select>
+              <button className="close" onClick={closeFilter} type="button">
+                X
+              </button>
+            </div>
+            )
+          }
 
-        <div className="doctors-container">
-          {filterDoctors.map((doctor) => (
-            <Doctor key={doctor.id} doc={doctor} role={role.name} history={history} />
-          ))}
+          <div className="doctors-container">
+            {filterDoctors.map((doctor) => (
+              <Doctor key={doctor.id} doc={doctor} role={role.name} history={history} />
+            ))}
+          </div>
         </div>
       </main>
     );

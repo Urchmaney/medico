@@ -56,11 +56,11 @@ class DatePicker extends React.Component {
           <Header name="Booking" iconOnClick={() => history.goBack()} />
           <form>
             <label htmlFor="date">
-              Date
+              <span>Date</span>
               <input id="date" type="date" onChange={handleChange} name="date" />
             </label>
             <label htmlFor="time">
-              Time
+              <span>Time</span>
               <input id="time" type="time" name="time" onChange={handleChange} />
             </label>
             <div className="btn-con">
