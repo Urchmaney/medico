@@ -15,7 +15,6 @@ main{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: #e1fff7;
 }
 
 
@@ -70,6 +69,7 @@ footer{
   background-color: $bg-color;
   text-align: center;
   padding-top: 80px;
+  height: 100%;
   h3, p {
     text-align: center;
   }
@@ -117,7 +117,8 @@ footer{
 
 .header{
   color: $dark-color;
-  position: relative;  
+  position: relative;
+  padding-bottom: 10px;
   .top{
     padding-top: 20px;
     font-size: 20px;
@@ -133,13 +134,14 @@ footer{
     }
   }  
   .search-container{
-    width: 100%;
-    position: absolute;
-    bottom: -15px;
+    width: 80%;
+    position: relative;
+    margin: 0 auto;
+    top: 30px;
     text-align: center;
     input{
       height: 40px;
-      width: 80%;
+      width: 100%;
       border: none;
       font-size: 15px;
       box-shadow: 1px 1px 1px 1px #f5f5f5;
@@ -149,8 +151,8 @@ footer{
     }
     span{
       position: absolute;
-      right: 30px;
-      top: 25px;
+      top: 13px;
+      right: 10px;
     }
   }
   .filter-btn{
@@ -196,8 +198,11 @@ footer{
   flex-wrap: wrap;
   justify-content: space-around;
   position: relative;
+  align-items: center;
   .filter-text{
     padding-top:5px;
+    font-size: 13px;
+    color: gray;
   }
   select{
     color: white;
@@ -280,9 +285,13 @@ footer{
 }
 .profile-con{
   height: 750px;
+  hr{
+    border-top: 0.0px solid lightgray;
+  }
   .doc-profile-con{
     background-color: $btn-color;
     color:white;
+
     .doc-profile{
       width: 70%;
       margin: auto;
@@ -332,26 +341,33 @@ footer{
     label{
       display: block;
       padding: 20px;
+      span {
+        display: block;
+        margin-bottom: 5px;
+      }
     }
     input{
       display: block;
       margin: auto;
       height: 50px;
       border-radius: 10px;
-      border: 1px solid gray;
+      border: 1px solid lightgray;
       &[type='date']{
-        width: 70%;
+        width: 100%;
+        max-width: 500px;
         padding-left: 15px;
-        font-size: 18px;
+        font-size: 14px;
       }
       &[type='time']{
-        width: 60%;
-        padding-left: 25px;
-        font-size: 20px;
+        width: 100%;
+        max-width: 500px;
+        padding-left: 15px;
+        font-size: 14px;
       }
     }
   } 
   .btn-con{
+    padding-top: 50px;
     text-align: center;
   }
   .info-con{
